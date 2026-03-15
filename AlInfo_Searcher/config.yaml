@@ -1,0 +1,67 @@
+# ============================================================
+# 資訊蒐集工具設定檔
+# ============================================================
+
+search:
+  # 主要搜尋來源，目前支援: duckduckgo, serpapi
+  default_source: duckduckgo
+
+  sources:
+    duckduckgo:
+      enabled: true
+      max_results: 10
+      region: "zh-tw"
+      safesearch: "moderate"   # off / moderate / strict
+
+    serpapi:
+      enabled: false
+      api_key: "YOUR_SERPAPI_KEY_HERE"
+      max_results: 10
+      gl: "tw"
+      hl: "zh-tw"
+
+    # 未來可在此新增其他來源，例如:
+    # bing:
+    #   enabled: false
+    #   api_key: "YOUR_BING_KEY"
+
+# 監控關鍵詞列表
+keywords:
+  - "Claude AI"
+  - "OpenAI GPT"
+
+# 監控人物列表（會與 keywords 合併搜尋）
+people:
+  - "Sam Altman"
+  - "Dario Amodei"
+
+# 排程設定
+schedule:
+  interval: 60
+  unit: "minutes"   # minutes / hours
+
+# 截圖設定
+screenshot:
+  enabled: true
+  viewport_width: 1280
+  viewport_height: 800
+  timeout_ms: 15000       # 頁面載入逾時（毫秒）
+  max_per_run: 5          # 每次執行最多截幾張（避免太慢）
+
+# Discord Webhook 設定
+discord:
+  enabled: true
+  webhook_url: "https://discord.com/api/webhooks/YOUR_ID/YOUR_TOKEN"
+  max_messages_per_run: 10   # 每次最多發幾則（避免洗版）
+  embed_color: 3447003       # 藍色（十進位）
+
+# 輸出設定
+output:
+  dir: "output"
+  screenshots_subdir: "screenshots"
+  retention_days: 30         # 保留幾天（0 = 永久保留）
+
+# 日誌設定
+logging:
+  level: "INFO"              # DEBUG / INFO / WARNING / ERROR
+  file: "logs/collector.log"
